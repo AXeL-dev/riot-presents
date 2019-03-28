@@ -1,0 +1,39 @@
+<presentation>
+    <slide slide="{ slide }"></slide>
+    <nav></nav>
+
+    <style>
+        presentation {
+            display: block;
+            height: 100%;
+        }
+        nav {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    </style>
+
+    <style type="text/unscoped">
+        html, body {
+            height: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            box-sizing: inherit;
+        }
+        body {
+            font-family: 'Droid Sans', sans-serif;
+            font-size: 20px;
+        }
+    </style>
+
+    <script>
+        this.slide = {
+            title: 'First slide',
+            type: 'title'
+        }
+    </script>
+</presentation>
