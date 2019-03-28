@@ -1,6 +1,6 @@
 <nav>
-    <button disabled="{ true }"><span class="fa fa-angle-left"></span></button>
-    <button><span class="fa fa-angle-right"></span></button>
+    <button disabled="{ current_slide <= 1 }" onclick="{ prev_slide }"><span class="fa fa-angle-left"></span></button>
+    <button disabled="{ current_slide >= slides.length }" onclick="{ next_slide }"><span class="fa fa-angle-right"></span></button>
 
     <style>
         button {
@@ -19,4 +19,18 @@
             cursor: default;
         }
     </style>
+
+    <script>
+        prev_slide() {
+            if (current_slide > 1) {
+                route('/' + --current_slide);
+            }
+        }
+
+        next_slide() {
+            if (current_slide < slides.length) {
+                route('/' + ++current_slide);
+            }
+        }
+    </script>
 </nav>

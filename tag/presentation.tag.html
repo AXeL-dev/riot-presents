@@ -1,6 +1,7 @@
 <presentation>
-    <slide slide="{ slide }"></slide>
-    <nav></nav>
+    <error if="{ opts.error }" error="{ opts.error }"></error>
+    <slide if="{ !opts.error }" slide="{ opts.slide }"></slide>
+    <nav if="{ !opts.error }"></nav>
 
     <style>
         presentation {
@@ -29,11 +30,4 @@
             font-size: 20px;
         }
     </style>
-
-    <script>
-        this.slide = {
-            title: 'First slide',
-            type: 'title'
-        }
-    </script>
 </presentation>

@@ -1,0 +1,44 @@
+<error>
+    <div>
+        <h1>Sorry, </h1>
+        <h2>{ opts.error }</h2>
+        <button onclick="{ go_back }">Go Back To Main Slide</button>
+    </div>
+
+    <style>
+        error > div {
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background-color: #222;
+            color: #fc0e49;
+        }
+        h2 {
+            font-weight: 300;
+            color: #fff;
+        }
+        button {
+            font-family: 'Yanone Kaffeesatz';
+            padding: 0.5rem 1rem;
+            margin: 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            background-color: #fc0e49;
+            color: #fff;
+            font-weight: 400;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        go_back() {
+            route('/');
+        }
+    </script>
+</error>
