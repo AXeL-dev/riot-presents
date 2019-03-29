@@ -30,4 +30,12 @@
             font-size: 20px;
         }
     </style>
+
+    <script>
+        this.on('mount', function() {
+            document.querySelectorAll('pre code').forEach(function(block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
 </presentation>
