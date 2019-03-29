@@ -17,9 +17,9 @@ riot.parsers.css.custom = function(tag, css) {
         var slide_id = 'slide-' + id++;
         // Add slide style & bind it to the slide id (to isolate the slide style)
         if (slide.style) {
-            // convert css rules to #slide-id rule { ... }
+            // convert css rules to #slide-id selector { ... }
             style += slide.style.replace(/(^|\})\s*([^\{\}]+)\s*(?=\{)/g, '$1 #' + slide_id + ' $2');
-            // fix :scope rule
+            // fix :scope selector
             style = style.replace('#' + slide_id + ' :scope', ':scope #' + slide_id);
         }
     });
