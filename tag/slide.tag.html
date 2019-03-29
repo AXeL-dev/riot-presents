@@ -1,8 +1,7 @@
 <slide>
-    <div class="{ title-slide: opts.slide.type == 'title' }">
-        <h1>{ opts.slide.title }</h1>
-        <h2><span class="fa fa-github"></span> <a href="https://github.com/bvaughn/react-presents">github.com/bvaughn/react-presents</a></h2>
-        <p>(Use the right and left arrow keys to navigate)</p>
+    <div id="{ slide.id }" class="{ slide.class }">
+        <h1>{ slide.title }</h1>
+        <slide-content></slide-content>
     </div>
 
     <style>
@@ -12,16 +11,16 @@
             height: 100%;
             padding: 1rem;
         }
-        .title-slide {
+        slide > div.center {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            height: 100%;
+        }
+        slide > div.dark {
             background-color: #222;
             color: #fff;
-            padding: 1rem;
         }
         h1, h2, h3, h4 {
             font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -57,7 +56,24 @@
         }
     </style>
 
+    <style type="text/custom">
+        @style
+    </style>
+
     <script>
-        
+        this.slide = opts.slide || { title: '', content: '' };
+
+        if ( !this.slide.content ) {
+            this.slide.content = '';
+        }
+
+        this.slide.id = 'slide-' + current_slide; // used to bind custom style to a specific slide
     </script>
 </slide>
+
+<slide-content>
+    <script>
+        // this tag is used to display HTML on slides
+        this.root.innerHTML = this.parent.slide.content;
+    </script>
+</slide-content>

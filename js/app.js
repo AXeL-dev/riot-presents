@@ -8,6 +8,23 @@ riot.parsers.css.unscoped = function(tag, css) {
     return '';
 };
 
+// Add another css parser to allow definition of custom style on a slide tag
+riot.parsers.css.custom = function(tag, css) {
+    // loop on slides array
+    var id = 1, style = '';
+    slides.forEach(function(slide) {
+        // Generate slide id
+        var slide_id = 'slide-' + id++;
+        // Add slide style & bind it to the slide id (to isolate the slide style)
+        if (slide.style) {
+            // convert css rules to #slide-id rule { ... }
+            style += slide.style.replace(/(^|\})\s*([^\{\}]+)\s*(?=\{)/g, '$1 #' + slide_id + ' $2');
+        }
+    });
+    // replace '@style' string with our custom style
+    return css.replace(/@style/, style);
+};
+
 // Set base route
 //route.base('/');
 
@@ -33,7 +50,7 @@ route(function(slide, step) {
     };
 
     // Mount tags
-    riot.mount('*', opts);
+    riot.mount('presentation', opts);
 });
 
 // Start router
