@@ -1,0 +1,9 @@
+<step>
+    <virtual if="{ index <= current_step }">
+        <yield/>
+    </virtual>
+
+    <script>
+        this.index = ++this.parent.parent.slide.steps_count;
+    </script>
+</step>

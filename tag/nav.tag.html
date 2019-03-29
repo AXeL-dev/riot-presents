@@ -1,6 +1,6 @@
 <nav>
-    <button disabled="{ current_slide <= 1 }" onclick="{ prev_slide }"><span class="fa fa-angle-left"></span></button>
-    <button disabled="{ current_slide >= slides.length }" onclick="{ next_slide }"><span class="fa fa-angle-right"></span></button>
+    <button disabled="{ current_slide <= 1 && (current_step == 0 || current_step > slides[current_slide - 1].steps_count) }" onclick="{ prev_slide }"><span class="fa fa-angle-left"></span></button>
+    <button disabled="{ current_slide >= slides.length && current_step >= slides[current_slide - 1].steps_count }" onclick="{ next_slide }"><span class="fa fa-angle-right"></span></button>
 
     <style>
         button {
@@ -22,14 +22,41 @@
 
     <script>
         prev_slide() {
-            if (current_slide > 1) {
-                route('/' + --current_slide);
+            if (current_slide > 1 || (slides[current_slide - 1].steps_count > 0 && current_step > 0)) {
+                if (slides[current_slide - 1].steps_count > 0 && current_step > 0) {
+                    current_step--;
+                }
+                else {
+                    current_slide--;
+                    if (slides[current_slide - 1].steps_count > 0) {
+                        current_step = slides[current_slide - 1].steps_count;
+                    }
+                }
+
+                this.update_route();
             }
         }
 
         next_slide() {
-            if (current_slide < slides.length) {
-                route('/' + ++current_slide);
+            if (current_slide < slides.length || current_step < slides[current_slide - 1].steps_count) {
+                if (slides[current_slide - 1].steps_count > 0 && current_step < slides[current_slide - 1].steps_count) {
+                    current_step++; 
+                }
+                else {
+                    current_slide++;
+                    current_step = 0;
+                }
+
+                this.update_route();
+            }
+        }
+
+        update_route() {
+            if (current_step > 0) {
+                route('/' + current_slide + '/' + current_step);
+            }
+            else {
+                route('/' + current_slide);
             }
         }
     </script>

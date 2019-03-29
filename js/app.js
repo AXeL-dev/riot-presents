@@ -19,8 +19,8 @@ riot.parsers.css.custom = function(tag, css) {
         if (slide.style) {
             // convert css rules to #slide-id rule { ... }
             style += slide.style.replace(/(^|\})\s*([^\{\}]+)\s*(?=\{)/g, '$1 #' + slide_id + ' $2');
-            // ubind/fix :scope rule
-            style = style.replace('#' + slide_id + ' :scope', ':scope');
+            // fix :scope rule
+            style = style.replace('#' + slide_id + ' :scope', ':scope #' + slide_id);
         }
     });
     // replace '@style' string with our custom style
@@ -38,7 +38,7 @@ route(function(slide, step) {
 
     // Save current slide & step
     current_slide = slide || 1;
-    current_step  = step || 1;
+    current_step  = step || 0;
 
     // Get slide index
     // array indexes start with 0 this is why we substrat 1 to the slide number
