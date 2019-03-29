@@ -12,6 +12,7 @@ var slides = [
         title: 'Second slide',
         content: `
             <p>some text</p>
+            <a href="#">link</a>
         `,
         style: `
             h1 {
@@ -19,6 +20,12 @@ var slides = [
             }
             p {
                 background: blue;
+            }
+            :scope {
+                background: orange;
+            }
+            a {
+                color: green;
             }
         `
     },
