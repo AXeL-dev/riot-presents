@@ -23,8 +23,8 @@ riot.parsers.css.custom = function(tag, css) {
             style = style.replace('#' + slide_id + ' :scope', ':scope #' + slide_id);
         }
     });
-    // replace '@style' string with our custom style
-    return css.replace(/@style/, style);
+    // replace '@css' string with our custom style
+    return css.replace(/@css/, style);
 };
 
 // Set base route
