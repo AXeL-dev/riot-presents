@@ -33,9 +33,99 @@
 
     <script>
         this.on('mount', function() {
+            // init highlight js
             document.querySelectorAll('pre code').forEach(function(block) {
                 hljs.highlightBlock(block);
             });
+
+            // handle document keydown event
+            document.addEventListener('keydown', this.on_keydown);
         });
+
+        this.on('unmount', function() {
+            // remove document keydown event
+            document.removeEventListener('keydown', this.on_keydown);
+        });
+
+        on_keydown(event) {
+            // Ignore keyboard events if the user is entering text
+            // Or interacting with form controls.
+            if (
+              event.target.tagName === 'INPUT' ||
+              event.target.tagName === 'SELECT' ||
+              event.target.tagName === 'TEXTAREA' ||
+              event.target.isContentEditable === true
+            ) {
+                return;
+            }
+
+            switch(event.key) {
+                case 'ArrowLeft':
+                    this.prev_slide();
+                    break;
+                case 'Enter':
+                case 'ArrowRight':
+                    this.next_slide();
+                    break;
+                case 'f':
+                    this.full_screen(document.body);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        full_screen(element) {
+            // Supports most browsers and their versions.
+            var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+            if (requestMethod) { // Native full screen.
+                requestMethod.call(element);
+            } else if (typeof window.ActiveXObject !== 'undefined') { // Older IE.
+                var wscript = new ActiveXObject('WScript.Shell');
+                if (wscript !== null) {
+                    wscript.SendKeys('{F11}');
+                }
+            }
+        }
+
+        prev_slide() {
+            if (current_slide > 1 || (slides[current_slide - 1].steps_count > 0 && current_step > 0)) {
+                if (slides[current_slide - 1].steps_count > 0 && current_step > 0) {
+                    current_step--;
+                }
+                else {
+                    current_slide--;
+                    if (slides[current_slide - 1].steps_count > 0) {
+                        current_step = slides[current_slide - 1].steps_count;
+                    }
+                }
+
+                this.update_route();
+            }
+        }
+
+        next_slide() {
+            if (current_slide < slides.length || current_step < slides[current_slide - 1].steps_count) {
+                if (slides[current_slide - 1].steps_count > 0 && current_step < slides[current_slide - 1].steps_count) {
+                    current_step++; 
+                }
+                else {
+                    current_slide++;
+                    current_step = 0;
+                }
+
+                this.update_route();
+            }
+        }
+
+        update_route() {
+            if (current_step > 0) {
+                route('/' + current_slide + '/' + current_step);
+            }
+            else {
+                route('/' + current_slide);
+            }
+        }
     </script>
 </presentation>
