@@ -1,4 +1,7 @@
 <nav>
+    <select onchange="{ on_change }">
+        <option each="{ slide, index in slides }" value="{ index + 1 }" selected="{ current_slide == index + 1 }">{ index + 1 } / { slides.length }</option>
+    </select>
     <button disabled="{ current_slide <= 1 && (current_step == 0 || current_step > slides[current_slide - 1].steps_count) }" onclick="{ parent.prev_slide }"><span class="fa fa-angle-left"></span></button>
     <button disabled="{ current_slide >= slides.length && current_step >= slides[current_slide - 1].steps_count }" onclick="{ parent.next_slide }"><span class="fa fa-angle-right"></span></button>
 
@@ -14,6 +17,9 @@
             font-size: 20px;
             cursor: pointer;
         }
+        select {
+            padding: 0.25rem 0.5rem;
+        }
         button:disabled {
             opacity: 0.5;
             cursor: default;
@@ -21,6 +27,8 @@
     </style>
 
     <script>
-        
+        on_change(e) {
+            route('/' + e.target.value);
+        }
     </script>
 </nav>
