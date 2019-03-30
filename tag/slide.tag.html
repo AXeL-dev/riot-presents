@@ -53,6 +53,15 @@
             padding: .25rem;
             word-wrap: break-word;
         }
+        .key {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: 400;
+            font-size: 18px;
+            padding: 0.25rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #fc0e49;
+            color: #fff;
+        }
         pre {
             font-size: 0.85rem;
         }
@@ -79,5 +88,7 @@
     <script>
         // this tag is used to display HTML on slides
         this.root.innerHTML = this.parent.slide.content;
+        // get expressions object from parent slide
+        this.expressions = this.parent.slide.expressions;
     </script>
 </slide-content>

@@ -1,7 +1,12 @@
 
 var slides = [
-    /*{
-        title: 'Step at begining slide',
+    {
+        title: 'Riot Presents',
+        class: 'center',
+        content: '<p>(Use the right and left arrow keys to navigate)</p>'
+    },
+    {
+        title: 'A simple slide',
         content: `
             <ul>
                 <li>Slides can contain multiple steps.</li>
@@ -9,65 +14,84 @@ var slides = [
                 <step><li>Step 2</li></step>
                 <step><li>Step 3</li></step>
             </ul>
-            <p>some text</p>
-        `
-    },*/
-    {
-        title: 'First slide',
-        class: 'center',
-        content: `
-            <h2><span class="fa fa-github"></span> <a href="https://github.com/bvaughn/react-presents">github.com/bvaughn/react-presents</a></h2>
-            <p>(Use the right and left arrow keys to navigate)</p>
         `
     },
     {
-        title: 'Second slide',
+        title: 'Styling',
         content: `
-            <p class="center">some text</p>
-            <a show="{ false }" href="#">link</a>
+            <p>Each slide can have it's own custom style:</p>
+            <pre class="javascript"><code>{ expressions.example_code }</code></pre>
+            <p>You can use the <span class="code">:scope</span> selector as in the example above to target the slide container without the need to specify a class.</p>
+        `,
+        expressions: {
+            example_code: `
+  var slides = [];
+
+  slides.push({
+    title:   'Slide Title',
+    content: 'Some text or HTML content or expressions { expressions.text }',
+    class:   'white-color', // Any CSS class(es) that should be applied to the slide container
+    style:   \`
+        :scope {
+            background-color: dark;
+        }
+        .white-color {
+            color: white;
+        }
+    \`, // custom CSS will work only on the elements inside the slide
+    expressions: {
+        text: 'This is inserted with an expression'
+    } // expressions is a simple object used to fill Riot JS expressions
+  });
+            `
+        }
+    },
+    {
+        title: 'Syntax highlighting',
+        content: `
+            <p>Slides can also contain syntax highlighting:</p>
+            <pre class="javascript"><code>{ expressions.example_code }</code></pre>
+            <p>Highlight themes can be found in the <span class="code">css/highlight</span> folder.</p>
+        `,
+        expressions: {
+            example_code: `
+  {
+    title:   'Slide Title',
+    content: \`
+        <pre class="html">
+            <code>
+                // Your code
+            </code>
+        </pre>
+    \`
+  }
+            `
+        }
+    },
+    {
+        title: 'Navigation',
+        content: `
+            <ul>
+                <li>Use <strong class="key">Enter</strong> or right arrow key to go to the next slide/step</li>
+                <li>Use left arrow key to go back to the previous slide/step</li>
+                <li>Use <strong class="key">F</strong> key to enter full screen mode</li>
+                <li>Use <strong class="key">ESC</strong> key to exit full screen mode</li>
+                <li>You can also use the navbar in the top right corner</li>
+            </ul>
+        `
+    },
+    {
+        title: 'Thanks for reading!',
+        class: 'center',
+        content: `
+            <p>Check back soon for more updates and components.</p>
+            <p><span class="fa fa-lg fa-github"></span> <a href="https://github.com/AXeL-dev/riot-presents">github.com/AXeL-dev/riot-presents</a></p>
         `,
         style: `
-            h1 {
-                background: red;
-            }
-            p {
-                background: blue;
-            }
             :scope {
-                background: orange;
+                background-color: #222;
+                color: #fff;
             }
-            a {
-                color: green;
-            }
-        `
-    },
-    {
-        title: 'Third slide',
-        content: `
-            <ul>
-                <li>Slides can contain multiple steps.</li>
-                <step><li>Step 1</li></step>
-                <step><li>Step 2</li></step>
-                <step><li>Step 3</li></step>
-            </ul>
-            <p>some text</p>
-        `
-    },
-    {
-        title: 'Last slide',
-        class: 'center',
-        content: '<p>Thanks for reading !</p>'
-    },
-    {
-        title: 'One more slide',
-        content: `
-            <ul>
-                <li>Slides can contain multiple steps.</li>
-                <step><li>Step 1</li></step>
-                <step><li>Step 2</li></step>
-                <step><li>Step 3</li></step>
-            </ul>
-            <p>some text</p>
         `
     }
 ];
