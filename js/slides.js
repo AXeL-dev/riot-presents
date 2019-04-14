@@ -59,11 +59,14 @@ var slides = [
     title:   'Slide Title',
     content: \`
         <pre class="html">
-            <code>
-                // Your code
-            </code>
+            <code>{ expressions.code }</code>
         </pre>
-    \`
+    \`,
+    expressions: {
+        code: \`
+            // Your code
+        \`
+    }
   }
             `
         }
