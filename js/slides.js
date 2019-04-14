@@ -17,6 +17,18 @@ var slides = [
         `
     },
     {
+        title: 'Navigation',
+        content: `
+            <ul>
+                <li>Use <strong class="key">Enter</strong> or right arrow key to go to the next slide/step</li>
+                <li>Use left arrow key to go back to the previous slide/step</li>
+                <li>Use <strong class="key">F</strong> key to enter full screen mode</li>
+                <li>Use <strong class="key">ESC</strong> key to exit full screen mode</li>
+                <li>You can also use the navbar in the top right corner</li>
+            </ul>
+        `
+    },
+    {
         title: 'Styling',
         content: `
             <p>Each slide can have it's own custom style:</p>
@@ -70,18 +82,6 @@ var slides = [
   }
             `
         }
-    },
-    {
-        title: 'Navigation',
-        content: `
-            <ul>
-                <li>Use <strong class="key">Enter</strong> or right arrow key to go to the next slide/step</li>
-                <li>Use left arrow key to go back to the previous slide/step</li>
-                <li>Use <strong class="key">F</strong> key to enter full screen mode</li>
-                <li>Use <strong class="key">ESC</strong> key to exit full screen mode</li>
-                <li>You can also use the navbar in the top right corner</li>
-            </ul>
-        `
     },
     {
         title: 'Thanks for reading!',
