@@ -24,7 +24,7 @@ var slides = [
                 <li>Use left arrow key to go back to the previous slide/step</li>
                 <li>Use <strong class="key">F</strong> key to enter full screen mode</li>
                 <li>Use <strong class="key">ESC</strong> key to exit full screen mode</li>
-                <li>You can also use the navbar in the top right corner</li>
+                <li>Use the navbar in the top right corner for easier navigation</li>
             </ul>
         `
     },
@@ -33,7 +33,7 @@ var slides = [
         content: `
             <p>Each slide can have it's own custom style:</p>
             <pre class="javascript"><code>{ expressions.example_code }</code></pre>
-            <p>You can use the <span class="code">:scope</span> selector as in the example above to target the slide container without the need to specify a class.</p>
+            <p>You can use the <span class="code">:scope</span> selector as in the example above to target the slide container without needing to specify a class.</p>
         `,
         expressions: {
             example_code: `
