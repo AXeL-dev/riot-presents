@@ -1,7 +1,7 @@
 Riot Presents
 =============
 
-A [Riot](https://axel-dev.github.io/portfolio/post.html?id=4) slideshow components to create HTML presentations inspired by [react-presents](https://github.com/bvaughn/react-presents) & [Slidr](https://github.com/sarfraznawaz2005/Slidr).
+A [Riot](https://axel-dev.github.io/portfolio/blog/post/riot-js-simple-yet-powerful) slideshow components to create HTML presentations inspired by [react-presents](https://github.com/bvaughn/react-presents) & [Slidr](https://github.com/sarfraznawaz2005/Slidr).
 
 [View Demo](https://axel-dev.github.io/riot-presents/)
 
